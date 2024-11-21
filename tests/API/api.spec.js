@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 
-test.describe.only('myFirstApi', () =>{
+test.describe('myFirstApi', () =>{
     
     test("Task", async ({request}) =>{
         
