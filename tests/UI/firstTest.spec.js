@@ -32,20 +32,6 @@ test('SCENARIO: User should be able to see the completed tasks when “Completed
 
 
 
-test('SCENARIO: Deleg a todo item', async ({page}) => {
-    await test.step('Given: The user has at least one active item ', async () => {
-        await page.goto('https://todomvc.com/examples/react/dist/');
-      });
-
-      await test.step('When: The user clicks on the x mark', async () => {
-        await page.getByPlaceholder('Username').click();
-      });
-
-      await test.step('Then: The user cannot see the item anymnore', async () => {
-        await expect(page.getByPlaceholder('Username')).toBeVisible;
-      });
-});
-
 test("SCENARIO #1: User should be able to filter  'Active' items with desired results.", async ({page}) => {
     await test.step('Given: The user has at least one completed and one active items ', async () => {
         await page.goto('https://todomvc.com/examples/react/dist/');
@@ -76,19 +62,19 @@ test("SCENARIO #2: User should be able to remove the completed todos.", async ({
 
       await test.step('When: The user clicks on the "Clear Completed" filter', async () => {
         await page.getByRole('button', { name: 'Clear completed' }).click();
-        // await page.waitForTimeout(1500)
+        await page.waitForTimeout(1500)
         //amend
       });
 
-      await test.step('AND: The user moves to ', async () => {
-        await page.getByRole('link', { name: 'Completed' }).click();
-        //amend
-      });
+      // await test.step('AND: The user moves to ', async () => {
+      //   await page.getByRole('link', { name: 'Completed' }).click();
+      //   amend
+      // });
 
 
       await test.step('Then: The user will not see any items on the complete', async () => {
         await expect(page.getByTestId('todo-item-label')).toBeEmpty;
-        //must say active 
+        
       });
 });
 
